@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 
 export const Container = styled.View`
   margin-top: 40px;
+  gap: 32px;
 `
 
 export const Title = styled.Text`
