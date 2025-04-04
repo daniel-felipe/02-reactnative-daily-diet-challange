@@ -1,12 +1,21 @@
 import { Container, Divider, MealText, Status, TimeText } from './styles'
 
-export function Meal() {
+export type MealProps = {
+  id: string
+  name: string
+  description: string
+  date: string
+  hour: string
+  inDiet: boolean
+}
+
+export function Meal({ name, hour, inDiet }: MealProps) {
   return (
     <Container>
-      <TimeText>20:00</TimeText>
+      <TimeText>{hour}</TimeText>
       <Divider />
-      <MealText>X-tudo</MealText>
-      <Status />
+      <MealText>{name}</MealText>
+      <Status inDiet={inDiet} />
     </Container>
   )
 }

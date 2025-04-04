@@ -34,9 +34,13 @@ export const MealText = styled.Text`
   `}
 `
 
-export const Status = styled.View`
+type StatusProps = {
+  inDiet: boolean
+}
+
+export const Status = styled.View<StatusProps>`
   width: 14px;
   height: 14px;
   border-radius: 999px;
-  background-color: ${({ theme }) => theme.colors.green.light};
+  background-color: ${({ theme, inDiet }) => (inDiet ? theme.colors.green.light : theme.colors.red.light)};
 `

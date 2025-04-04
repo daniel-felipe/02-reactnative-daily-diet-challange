@@ -1,7 +1,7 @@
+import styled, { css } from 'styled-components/native'
+
 import { Plus } from 'phosphor-react-native'
 import { TouchableOpacity } from 'react-native'
-import { css } from 'styled-components'
-import styled from 'styled-components/native'
 
 export const Container = styled.View`
   margin-top: 40px;
@@ -32,7 +32,6 @@ export const ButtonText = styled.Text`
   ${({ theme }) => css`
     font-family: ${theme.fontFamily.bold};
     font-size: ${theme.fontSize.sm}px;
-    line-height: ${theme.fontSize['2xl'] * 1.3}px;
     color: ${theme.colors.white};
   `}
 `
@@ -41,3 +40,16 @@ export const ButtonIcon = styled(Plus).attrs(({ theme }) => ({
   color: theme.colors.white,
   size: 18,
 }))``
+
+export const MealsWrapper = styled.View`
+  gap: 8px;
+`
+
+export const MealsDate = styled.Text`
+  ${({ theme }) => css`
+    font-family: ${theme.fontFamily.bold};
+    font-size: ${theme.fontSize.lg}px;
+    line-height: ${theme.fontSize['2xl'] * 1.3}px;
+    color: ${theme.colors.gray['700']};
+  `}
+`
