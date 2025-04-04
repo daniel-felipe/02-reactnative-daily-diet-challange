@@ -7,6 +7,7 @@ import { ThemeProvider } from 'styled-components/native'
 
 import { Home } from '@/screens/Home'
 import theme from '@/theme'
+import { StatusBar } from 'expo-status-bar'
 
 export default function App() {
   useFonts({
@@ -16,6 +17,7 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
+      <StatusBar backgroundColor="transparent" translucent={true} />
       <Home />
     </ThemeProvider>
   )

@@ -39,6 +39,22 @@ const meals: MealProps[] = [
     hour: '08:00',
     inDiet: true,
   },
+  {
+    id: uuid.v4(),
+    name: 'Salada de frutas',
+    description: '',
+    date: '2025-04-03',
+    hour: '08:00',
+    inDiet: true,
+  },
+  {
+    id: uuid.v4(),
+    name: 'Arroz, feijão e ovo',
+    description: '',
+    date: '2025-04-02',
+    hour: '08:00',
+    inDiet: true,
+  },
 ]
 
 function groupMealsByDate(meals: MealProps[]): Record<string, MealProps[]> {

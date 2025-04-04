@@ -1,4 +1,4 @@
-import { Image } from 'react-native'
+import { Image, ScrollView } from 'react-native'
 
 import { PercentCard } from '@/components/PercentCard'
 
@@ -11,12 +11,14 @@ import { Container, Header, Profile } from './styles'
 export function Home() {
   return (
     <Container>
-      <Header>
-        <Image source={logo} />
-        <Profile source={profileMock} />
-      </Header>
-      <PercentCard />
-      <Meals />
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <Header>
+          <Image source={logo} />
+          <Profile source={profileMock} />
+        </Header>
+        <PercentCard />
+        <Meals />
+      </ScrollView>
     </Container>
   )
 }
