@@ -6,11 +6,13 @@ import {
 import { ThemeProvider } from 'styled-components/native'
 
 import { Home } from '@/screens/Home'
+import { Statistics } from '@/screens/Statistics'
 import theme from '@/theme'
 import { StatusBar } from 'expo-status-bar'
+import { ActivityIndicator, View } from 'react-native'
 
 export default function App() {
-  useFonts({
+  const [isFontLoaded] = useFonts({
     NunitoSans_400Regular,
     NunitoSans_700Bold,
   })
@@ -18,7 +20,20 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <StatusBar backgroundColor="transparent" translucent={true} />
-      <Home />
+
+      {isFontLoaded ? (
+        <Statistics />
+      ) : (
+        <View
+          style={{
+            flex: 1,
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          <ActivityIndicator size="large" />
+        </View>
+      )}
     </ThemeProvider>
   )
 }
