@@ -6,7 +6,6 @@ import styled, { css } from 'styled-components/native'
 import { ArrowLeft } from 'phosphor-react-native'
 
 export const Container = styled(SafeAreaView)`
-  flex: 1;
   background-color: ${({ theme }) => theme.colors.green.light};
 `
 
