@@ -1,8 +1,8 @@
-import { format } from 'date-fns'
-import { View } from 'react-native'
+import { useState } from 'react'
+import { SectionList, View } from 'react-native'
 import uuid from 'react-native-uuid'
 
-import { Meal, MealProps } from '@/components/Meal'
+import { Meal } from '@/components/Meal'
 
 import {
   Button,
@@ -10,67 +10,51 @@ import {
   ButtonText,
   Container,
   MealsDate,
-  MealsWrapper,
+  Separator,
   Title,
 } from './styles'
 
-const meals: MealProps[] = [
-  {
-    id: uuid.v4(),
-    name: 'Omelete',
-    description: '',
-    date: '2025-04-01',
-    hour: '08:00',
-    inDiet: true,
-  },
-  {
-    id: uuid.v4(),
-    name: 'X-tudo',
-    description: '',
-    date: '2025-04-01',
-    hour: '08:00',
-    inDiet: false,
-  },
-  {
-    id: uuid.v4(),
-    name: 'Whey com leite',
-    description: '',
-    date: '2025-04-02',
-    hour: '08:00',
-    inDiet: true,
-  },
-  {
-    id: uuid.v4(),
-    name: 'Salada de frutas',
-    description: '',
-    date: '2025-04-03',
-    hour: '08:00',
-    inDiet: true,
-  },
-  {
-    id: uuid.v4(),
-    name: 'Arroz, feijão e ovo',
-    description: '',
-    date: '2025-04-02',
-    hour: '08:00',
-    inDiet: true,
-  },
-]
-
-function groupMealsByDate(meals: MealProps[]): Record<string, MealProps[]> {
-  return meals.reduce((acc: Record<string, MealProps[]>, meal) => {
-    if (!acc[meal.date]) {
-      acc[meal.date] = []
-    }
-
-    acc[meal.date].push(meal)
-
-    return acc
-  }, {})
-}
-
 export function Meals() {
-  const groupedMeals = groupMealsByDate(meals)
+  const [meals, setMeals] = useState([
+    {
+      title: '01.04.2025',
+      data: [
+        {
+          id: uuid.v4(),
+          name: 'Omelete',
+          description: '',
+          hour: '08:00',
+          inDiet: true,
+        },
+        {
+          id: uuid.v4(),
+          name: 'X-tudo',
+          description: '',
+          hour: '08:00',
+          inDiet: false,
+        },
+      ],
+    },
+    {
+      title: '02.04.2025',
+      data: [
+        {
+          id: uuid.v4(),
+          name: 'Whey com leite',
+          description: '',
+          hour: '08:00',
+          inDiet: true,
+        },
+        {
+          id: uuid.v4(),
+          name: 'Arroz, feijão e ovo',
+          description: '',
+          hour: '08:00',
+          inDiet: true,
+        },
+      ],
+    },
+  ])
 
   return (
     <Container>
@@ -81,16 +65,20 @@ export function Meals() {
           <ButtonText>Nova Refeição</ButtonText>
         </Button>
       </View>
-
-      {Object.keys(groupedMeals).map((date) => (
-        <MealsWrapper key={date}>
-          <MealsDate>{format(new Date(date), 'dd.MM.yyyy')}</MealsDate>
-
-          {groupedMeals[date].map((meal) => (
-            <Meal key={meal.id} {...meal} />
-          ))}
-        </MealsWrapper>
-      ))}
+      <View>
+        <SectionList
+          sections={meals}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => (
+            <Meal name={item.name} hour={item.hour} inDiet={item.inDiet} />
+          )}
+          renderSectionHeader={({ section }) => (
+            <MealsDate>{section.title}</MealsDate>
+          )}
+          ItemSeparatorComponent={() => <Separator />}
+          stickySectionHeadersEnabled={false}
+        />
+      </View>
     </Container>
   )
 }

@@ -9,7 +9,9 @@ export type MealProps = {
   inDiet: boolean
 }
 
-export function Meal({ name, hour, inDiet }: MealProps) {
+export type Props = Pick<MealProps, 'name' | 'hour' | 'inDiet'>
+
+export function Meal({ name, hour, inDiet }: Props) {
   return (
     <Container>
       <TimeText>{hour}</TimeText>

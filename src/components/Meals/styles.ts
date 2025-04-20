@@ -5,7 +5,6 @@ import { TouchableOpacity } from 'react-native'
 
 export const Container = styled.View`
   margin-top: 40px;
-  gap: 32px;
 `
 
 export const Title = styled.Text`
@@ -41,15 +40,16 @@ export const ButtonIcon = styled(Plus).attrs(({ theme }) => ({
   size: 18,
 }))``
 
-export const MealsWrapper = styled.View`
-  gap: 8px;
-`
-
 export const MealsDate = styled.Text`
   ${({ theme }) => css`
     font-family: ${theme.fontFamily.bold};
     font-size: ${theme.fontSize.lg}px;
     line-height: ${theme.fontSize['2xl'] * 1.3}px;
     color: ${theme.colors.gray['700']};
+    margin-top: 32px;
   `}
+`
+
+export const Separator = styled.View`
+  height: 8px;
 `
