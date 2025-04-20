@@ -1,3 +1,4 @@
+import { ArrowUpRight } from 'phosphor-react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 import styled from 'styled-components/native'
@@ -18,3 +19,7 @@ export const Profile = styled.Image`
   border-radius: 999px;
   background-color: ${({ theme }) => theme.colors.gray['300']};
 `
+
+export const ArrowIcon = styled(ArrowUpRight).attrs(({ theme }) => ({
+  color: theme.colors.green.dark,
+}))``

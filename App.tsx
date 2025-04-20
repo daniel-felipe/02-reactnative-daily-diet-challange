@@ -5,11 +5,12 @@ import {
 } from '@expo-google-fonts/nunito-sans'
 import { ThemeProvider } from 'styled-components/native'
 
-import { Home } from '@/screens/Home'
+import { ActivityIndicator, View } from 'react-native'
+
+import { StatusBar } from 'expo-status-bar'
+
 import { Statistics } from '@/screens/Statistics'
 import theme from '@/theme'
-import { StatusBar } from 'expo-status-bar'
-import { ActivityIndicator, View } from 'react-native'
 
 export default function App() {
   const [isFontLoaded] = useFonts({

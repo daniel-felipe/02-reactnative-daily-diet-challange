@@ -1,11 +1,15 @@
 import styled, { css } from 'styled-components/native'
 
-import { ArrowUpRight } from 'phosphor-react-native'
+import { TouchableOpacity, ViewProps } from 'react-native'
 
-export const Container = styled.View`
+export type CardProps = ViewProps & {
+  variant?: 'success' | 'danger'
+}
+
+export const Container = styled.View<CardProps>`
   position: relative;
   padding: 20px 16px;
-  background-color: ${({ theme }) => theme.colors.green.light};
+  background-color: ${({ theme, variant }) => (variant === 'success' ? theme.colors.green.light : theme.colors.red.light)};
   border-radius: 8px;
 
   align-items: center;
@@ -30,11 +34,14 @@ export const Subtitle = styled.Text`
   `}  
 `
 
-export const OpenIcon = styled(ArrowUpRight)`
+export const RightButton = styled(TouchableOpacity)`
   position: absolute;
-  right: 12px;
-  top: 12px;
+  right: 8px;
+  top: 8px;
+`
 
-  font-size: 24px;
-  color: ${({ theme }) => theme.colors.green.dark};
+export const LeftButton = styled(TouchableOpacity)`
+  position: absolute;
+  left: 8px;
+  top: 8px;
 `
